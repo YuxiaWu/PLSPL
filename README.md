@@ -4,7 +4,7 @@ code for Personalized long-and short-term preference learning for next POI recom
 If you use the code, please cite the following paper:
 
 
-'''
+```
 @article{wu2020personalized,
 
   title={Personalized long-and short-term preference learning for next POI recommendation},
@@ -18,7 +18,7 @@ If you use the code, please cite the following paper:
   publisher={IEEE}
   
 }
-'''
+```
 
 The code for the paper "Personalized long-and short-term preference learning for next POI recommendation"
  # data preprocess
