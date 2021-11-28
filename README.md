@@ -4,11 +4,17 @@ code for Personalized long-and short-term preference learning for next POI recom
 If you use the code, please cite the following paper:
 
 @article{wu2020personalized,
+
   title={Personalized long-and short-term preference learning for next POI recommendation},
+  
   author={Wu, Yuxia and Li, Ke and Zhao, Guoshuai and Xueming, QIAN},
+  
   journal={IEEE Transactions on Knowledge and Data Engineering},
+  
   year={2020},
+  
   publisher={IEEE}
+  
 }
 
 
