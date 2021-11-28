@@ -115,19 +115,9 @@ Model = model.long_short(
 userid_cursor = False
 results_cursor = False
 
-"""
-#加载现有的模型
-
-savedir = 'checkpoint_file/checkpoint_'+ run_name 
-modelWeight = torch.load(savedir + '/checkpoint_15.tar')['state_dict']  
-Model.load_state_dict(modelWeight) 
-"""
-
 Model = Model.cuda()
 
 loss_function = nn.CrossEntropyLoss()
-# loss_function = nn.NLLLoss()
-# optimizer = optim.Adam(Model.parameters(), lr,weight_decay = 1e-8)
 optimizer = optim.Adam(Model.parameters(), lr)
 
 
@@ -163,7 +153,6 @@ def recall(indices, batch_y, k, count, delta_dist):
 
 
 for epoch in range(num_epochs):
-    # for epoch in range(5,6,1):
     Model = Model.train()
     total_loss = 0.0
 
@@ -186,13 +175,8 @@ for epoch in range(num_epochs):
     results_test = []
 
     for step, (batch_x, batch_x_cat, batch_y, hours, batch_userid, hour_pre, week_pre) in enumerate(loader_train):
-        Model.zero_grad()
-        # users = batch_userid.unsqueeze(1).repeat(1,batch_x.size(1))
+        Model.zero_grad()     
         users = batch_userid.cuda()
-
-        # batch_features = long_term_feature[batch_userid-1]
-        # batch_features = Variable(torch.Tensor(batch_features)).cuda()
-
         hourids = Variable(hours.long()).cuda()
 
         batch_x, batch_x_cat, batch_y, hour_pre, week_pre = (
@@ -203,18 +187,12 @@ for epoch in range(num_epochs):
             Variable(week_pre.long()).cuda(),
         )
 
-        # outputs = Model(batch_x,batch_x_cat,users,hourids,hour_pre,week_pre,poi_long,cat_long,hour_long,week_long)
-
         poi_candidate = list(range(vocab_poi + 1))
         poi_candi = Variable(torch.LongTensor(poi_candidate)).cuda()
-
         cat_candi = Variable(cat_candi).cuda()
-
         outputs = Model(
             batch_x, batch_x_cat, users, hourids, hour_pre, week_pre, poi_candi, cat_candi
-        )  # ,batch_features)
-
-        # outputs = Model(batch_x,lengths)
+        )  
 
         loss = 0
         for i in range(batch_x.size(0)):
@@ -280,12 +258,7 @@ for epoch in range(num_epochs):
 
         for step, (batch_x, batch_x_cat, batch_y, hours, batch_userid, hour_pre, week_pre) in enumerate(loader_test):
             Model.zero_grad()
-            # 			users = batch_userid.unsqueeze(1).repeat(1,batch_x.size(1))
             hourids = hours.long()
-
-            # batch_features = long_term_feature[batch_userid-1]
-            # batch_features = Variable(torch.Tensor(batch_features)).cuda()
-
             users = batch_userid
 
             batch_x, batch_x_cat, batch_y, hour_pre, week_pre = (
@@ -300,7 +273,7 @@ for epoch in range(num_epochs):
 
             outputs = Model(
                 batch_x, batch_x_cat, users, hourids, hour_pre, week_pre, poi_candi, cat_candi
-            )  # , batch_features)
+            ) 
             loss = 0
             for i in range(batch_x.size(0)):
                 loss += loss_function(outputs[i, :, :], batch_y[i, :])
