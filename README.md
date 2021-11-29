@@ -14,4 +14,6 @@ If you use the code, please cite the following paper:
 ```
 
 # data preprocess
-The sequence is preprocessed by sliding window. The length of each session is 20. The last one is the ground truth.
+The sequence is preprocessed by sliding window. The length of each session is 20. The last one is the ground truth. You can change the setting based on your model.
+
+In the preprocess.py, I also add the preprocessing for other compared baselines. You can omit them if you don't use them.
