@@ -43,9 +43,9 @@ class long_short(nn.Module):
 		self.out_w_cat = Parameter(torch.Tensor([0.25]).repeat(vocab_user))
 
 		
-		self.w1 = Parameter(torch.Tensor([0.5]))
-		self.w2 = Parameter(torch.Tensor([0.5]))
-		self.w3 = Parameter(torch.Tensor([0.5]))
+		#self.w1 = Parameter(torch.Tensor([0.5]))
+		#self.w2 = Parameter(torch.Tensor([0.5]))
+		#self.w3 = Parameter(torch.Tensor([0.5]))
 
 		self.weight_hidden_poi = Parameter(torch.ones(self.hidden_size,1))
 		self.weight_hidden_cat = Parameter(torch.ones(self.hidden_size,1))
