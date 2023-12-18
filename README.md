@@ -1,7 +1,9 @@
 # PLSPL
-code for Personalized long-and short-term preference learning for next POI recommendation. TKDE'20
 
-# Important Packages:
+Code for Personalized long-and short-term preference learning for next POI recommendation. TKDE'20
+
+# Environment:
+
 - Python
 - Pytorch
 
@@ -18,7 +20,7 @@ In the preprocess.py, I also add the preprocessing for other compared baselines.
 
 `python train_long_short.py`
 
-
+# Cite
 If you use the code, please cite the following paper:
 
 ```
@@ -29,4 +31,14 @@ If you use the code, please cite the following paper:
   year={2020},
   publisher={IEEE}
 }
+
+@inproceedings{wu2019long,
+  title={Long-and short-term preference learning for next POI recommendation},
+  author={Wu, Yuxia and Li, Ke and Zhao, Guoshuai and Qian, Xueming},
+  booktitle={Proceedings of the 28th ACM international conference on information and knowledge management},
+  pages={2301--2304},
+  year={2019}
+}
+
 ```
+
