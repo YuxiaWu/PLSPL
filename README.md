@@ -1,6 +1,24 @@
 # PLSPL
 code for Personalized long-and short-term preference learning for next POI recommendation. TKDE'20
 
+# Important Packages:
+- Python
+- Pytorch
+
+# Data preprocess
+The sequence is preprocessed by a sliding window. The length of each session is 20. The last one is the ground truth. You can change the setting based on your model.
+
+Run data preprocess:
+
+`python preprocess_longshort.py`
+
+In the preprocess.py, I also add the preprocessing for other compared baselines. You can omit them if you don't use them.
+
+# Run
+
+`python train_long_short.py`
+
+
 If you use the code, please cite the following paper:
 
 ```
@@ -12,8 +30,3 @@ If you use the code, please cite the following paper:
   publisher={IEEE}
 }
 ```
-
-# data preprocess
-The sequence is preprocessed by sliding window. The length of each session is 20. The last one is the ground truth. You can change the setting based on your model.
-
-In the preprocess.py, I also add the preprocessing for other compared baselines. You can omit them if you don't use them.
